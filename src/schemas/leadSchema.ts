@@ -9,16 +9,9 @@ export const leadSchema = z.object({
 
   phone: z.string().trim().min(10, "Некоректний номер телефону."),
 
-  cars: z
-    .number({
-      error: "Кількість авто повинна бути числом",
-    })
-    .int({
-      error: "Кількість авто повинна бути цілим числом",
-    })
-    .positive("Кількість авто повинна бути більше 0"),
+  cars: z.string().trim().min(1, "Введіть коректну кількість авто."),
 
-  region: z.string().trim().min(2, "Оберіть існуючий регіон"),
+  region: z.string().trim().min(2, "Оберіть існуючий регіон."),
 });
 
 export type Lead = z.infer<typeof leadSchema>;

@@ -18,6 +18,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (_, res) => {
+  res.send("API is running");
+});
+
 app.use("/api", leadRouter);
 
 app.use((_, res) => {
@@ -25,10 +30,6 @@ app.use((_, res) => {
     success: false,
     message: "Route not found",
   });
-});
-
-app.get("/", (_, res) => {
-  res.send("API is running");
 });
 
 export default app;
