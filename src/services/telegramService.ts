@@ -1,15 +1,19 @@
 import { bot } from "../bot/tgBot";
 import { Lead } from "../schemas/leadSchema";
 
+const chatId = process.env.GROUP_CHAT_ID!;
+
 export const sendLead = async (lead: Lead) => {
   const message = `
-НОВА ЗАЯВКА!
+🔔 <b>НОВА ЗАЯВКА!</b>
 
-Ім'я: ${lead.name}
-Телефон: ${lead.phone}
-Автопарк: ${lead.cars}
-Регіон: ${lead.region}
+<b>Ім'я:</b> ${lead.name}
+<b>Телефон:</b> ${lead.phone}
+<b>Автопарк:</b> ${lead.cars}
+<b>Регіон:</b> ${lead.region}
 `;
 
-  await bot.api.sendMessage(process.env.GROUP_CHAT_ID!, message);
+  await bot.api.sendMessage(chatId, message, {
+    parse_mode: "HTML",
+  });
 };
