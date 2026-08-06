@@ -1,22 +1,15 @@
 import express from "express";
 import cors from "cors";
-import leadRouter from "./routes/leadRoutes";
-import { success } from "zod";
+import leadRouter from "./routes/leadRouter";
 
 const app = express();
 
-// TODO: change cors access (for production)
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       "https://staging.company.com",
-//       "https://company.com",
-//     ],
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://km-trade.net",
+  }),
+);
 
-app.use(cors());
 app.use(express.json());
 
 app.get("/", (_, res) => {
