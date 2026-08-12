@@ -11,6 +11,7 @@ export const sendLead = async (lead: Lead) => {
 <b>Телефон:</b> ${lead.phone}
 <b>Автопарк:</b> ${lead.cars}
 <b>Регіон:</b> ${lead.region}
+<b>Контекст заявки:</b> ${lead.context ?? "Не вказано"}
 `;
 
   await bot.api.sendMessage(chatId, message, {

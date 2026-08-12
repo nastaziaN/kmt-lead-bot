@@ -12,6 +12,7 @@ export const leadSchema = z.object({
   cars: z.string().trim().min(1, "Введіть коректну кількість авто."),
 
   region: z.string().trim().min(2, "Оберіть існуючий регіон."),
+  context: z.string().optional(),
 });
 
 export type Lead = z.infer<typeof leadSchema>;
